@@ -1,0 +1,47 @@
+<!-- <h3>Using Formcontrol</h3>
+<div class="">
+  <div class="">
+    Name:
+    <input [formControl]="name" />
+    <label *ngIf="name.invalid" [ngClass]="'error'"> max 15 characters.</label>
+  </div>
+  <div class="">
+    <button (click)="setNameValue()">Set value</button>
+    <button (click)="setResetName()">Reset</button>
+  </div>
+  <div class="">
+    Age:
+    <input [formControl]="age" />
+  </div>
+  <div class="">
+    City:
+    <input [formControl]="city" />
+  </div>
+  <div class="">
+    Country:
+    <input [formControl]="country" />
+  </div>
+  <div class="">
+    <input type="checkbox" [checked]="married.value" (change)="changeValue()" />
+    Are you married?
+  </div>
+</div>
+<div>
+ <p>Name: <b>{{ name.value }}</b>, Validation Status: <b>{{ name.status }}</b></p>
+ <p>Age: <b>{{ age.value }}</b>, Validation Status: <b>{{ age.status }}</b></p>
+ <p>City: <b>{{ city.value }}</b> </p>
+ <p>Country: <b>{{ country.value }}</b> </p>
+ <p>Married?: <b>{{ married.value }}</b> </p>
+</div> -->
+
+<h3> FormControl with FormGroup using FormControlName </h3>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  Name: <input formControlName="name" placeholder="Enter Name" />
+  <label *ngIf="userName.invalid" [ngClass]="'error'"> too long. </label>
+  <label *ngIf="userForm.get('name').invalid" [ngClass]="'error'"> too long. </label>
+  Age: <input formControlName="age" placeholder="Enter Age" />
+  City: <input formControlName="city" placeholder="Enter City" />
+  Country: <input formControlName="country" placeholder="Enter Country" />
+  <button type="submit">Submit</button>
+  <button type="button" (click)="setDefaultValue()">Set Default</button>
+</form>
